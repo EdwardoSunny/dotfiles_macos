@@ -31,6 +31,10 @@ osascript -l JavaScript -e "ObjC.import('Foundation'); \$.NSDistributedNotificat
 # Give the native menu bar a background, so when it slides down on hover it covers SketchyBar
 # cleanly instead of drawing its text on top (System Settings → Menu Bar → Show menu bar background).
 defaults write NSGlobalDomain SLSMenuBarUseBlurredAppearance -bool true
+# Hide desktop widgets (they peek through the gaps between tiled windows).
+defaults write com.apple.WindowManager StandardHideWidgets -bool true
+defaults write com.apple.WindowManager StageManagerHideWidgets -bool true
+killall WindowManager 2>/dev/null || true
 # Mission Control: group windows by app (AeroSpace recommends this).
 defaults write com.apple.dock expose-group-apps -bool true
 # Auto-hide the Dock (move the mouse to the bottom edge to show it).

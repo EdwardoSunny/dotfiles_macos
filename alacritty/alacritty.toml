@@ -5,7 +5,7 @@ live_config_reload = true
 
 [window]
 padding = { x = 16, y = 14 }
-decorations = "None"        # no title bar; AeroSpace handles placement
+decorations = "Buttonless" # hidden title bar/buttons, keeps macOS rounded corners
 opacity = 0.85             # background transparency (1.0 = opaque)
 blur = true                # blur what's behind the window
 
@@ -25,39 +25,39 @@ key = "Return"
 mods = "Shift"
 chars = "\u001B\r"
 
-# Rosé Pine — https://github.com/rose-pine/alacritty
+# Monochrome: black/white/grays, with muted hints so errors and diffs stay readable.
 [colors.primary]
-background = "#191724"
-foreground = "#e0def4"
+background = "#000000"
+foreground = "#e8e8e8"
 
 [colors.cursor]
-text = "#e0def4"
-cursor = "#524f67"
+text = "#000000"
+cursor = "#e8e8e8"
 
 [colors.vi_mode_cursor]
-text = "#e0def4"
-cursor = "#524f67"
+text = "#000000"
+cursor = "#e8e8e8"
 
 [colors.selection]
-text = "#e0def4"
-background = "#403d52"
+text = "#ffffff"
+background = "#3a3a3a"
 
 [colors.normal]
-black = "#26233a"
-red = "#eb6f92"
-green = "#31748f"
-yellow = "#f6c177"
-blue = "#9ccfd8"
-magenta = "#c4a7e7"
-cyan = "#ebbcba"
-white = "#e0def4"
+black = "#262626"
+red = "#c27d7d"
+green = "#8fa38f"
+yellow = "#c2b48f"
+blue = "#8f9fb3"
+magenta = "#a99ab3"
+cyan = "#8fadad"
+white = "#d0d0d0"
 
 [colors.bright]
-black = "#6e6a86"
-red = "#eb6f92"
-green = "#31748f"
-yellow = "#f6c177"
-blue = "#9ccfd8"
-magenta = "#c4a7e7"
-cyan = "#ebbcba"
-white = "#e0def4"
+black = "#6b6b6b"
+red = "#d49494"
+green = "#a8bca8"
+yellow = "#d6c9a6"
+blue = "#a8b6c7"
+magenta = "#bfb1c7"
+cyan = "#a8c4c4"
+white = "#ffffff"
