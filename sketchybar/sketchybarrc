@@ -81,10 +81,13 @@ sketchybar --add item clock right \
 
 ##### Tray: background apps, glyph shown while running, click to open #####
 # name | glyph (Nerd Font) | bundle id (click opens it) | pgrep -f pattern (is it running?)
+# Items further down the list appear further left in the bar.
 TRAY=(
-  "1password|󰌆|com.1password.1password|1Password.app/Contents/MacOS/1Password$"
-  "drive|󰋊|com.google.drivefs|Google Drive.app/Contents/MacOS/Google Drive$"
-  "handy|󰍬|com.pais.handy|Handy.app/Contents/MacOS/handy$"
+  "1password|󰌆|com.1password.1password|1Password.app/Contents/MacOS/1Password( |$)"
+  "drive|󰊶|com.google.drivefs|Google Drive.app/Contents/MacOS/Google Drive( |$)"
+  "tailscale|󱗼|io.tailscale.ipn.macsys|Tailscale.app/Contents/MacOS/Tailscale( |$)"
+  "cisco|󰖂|com.cisco.secureclient.gui|Cisco Secure Client - AnyConnect VPN Service( |$)"
+  "handy|󰍬|com.pais.handy|Handy.app/Contents/MacOS/handy( |$)"
   "karabiner|󰌌|org.pqrs.Karabiner-Elements.Settings|Karabiner-Core-Service"
 )
 for entry in "${TRAY[@]}"; do
