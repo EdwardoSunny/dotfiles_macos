@@ -1,6 +1,6 @@
 # dotfiles (macOS)
 
-Minimal tiling setup: [AeroSpace](https://github.com/nikitabobko/AeroSpace) + [SketchyBar](https://github.com/FelixKratz/SketchyBar) + [Alacritty](https://alacritty.org) + [Karabiner-Elements](https://karabiner-elements.pqrs.org/). Rosé Pine colors, JetBrainsMono Nerd Font.
+Minimal tiling setup: [AeroSpace](https://github.com/nikitabobko/AeroSpace) + [SketchyBar](https://github.com/FelixKratz/SketchyBar) + [Alacritty](https://alacritty.org) + [Karabiner-Elements](https://karabiner-elements.pqrs.org/). Monochrome (black/white/gray) colors, JetBrainsMono Nerd Font.
 
 ## Layout
 
@@ -54,9 +54,9 @@ FaceTime, System Settings and Calculator always float.
 
 ## Bar
 
-Translucent, rounded SketchyBar at the top edge: workspaces (click to switch) and focused app on the left; background-app tray, Wi-Fi, volume, battery, clock on the right. On the notched built-in display it fills the menu-bar strip so the notch sits inside it.
+Translucent black, rounded SketchyBar at the top edge: workspaces (click to switch; focused one is a white pill) and focused app on the left; background-app tray, Wi-Fi, volume, battery, clock on the right. On the notched built-in display it fills the menu-bar strip so the notch sits inside it.
 
-The tray shows an app's icon while it's running; click to open it. Edit the `TRAY` list in `sketchybar/sketchybarrc` to add apps (name, bundle id, process pattern). The native macOS status icons can't be mirrored on macOS 26: Control Center hosts all third-party ones under the same window name.
+The tray shows a gray glyph for each background app while it's running; click to open it. Edit the `TRAY` list in `sketchybar/sketchybarrc` to add apps (name, Nerd Font glyph, bundle id, process pattern). The native macOS status icons can't be mirrored on macOS 26: Control Center hosts all third-party ones under the same window name.
 
 Hovering the top edge still reveals the native macOS menu bar (app menus, status icons) on top of SketchyBar. That's macOS auto-hide behavior and can't be turned off; "Show menu bar background" makes it cover the bar cleanly instead of overlapping text.
 
@@ -66,6 +66,7 @@ Hovering the top edge still reveals the native macOS menu bar (app menus, status
 | --- | --- |
 | Always auto-hide menu bar | System Settings → Menu Bar → "Automatically hide and show the menu bar" → Never |
 | Menu bar background on hover | System Settings → Menu Bar → "Show menu bar background" → off |
+| Hide desktop widgets | `defaults write com.apple.WindowManager StandardHideWidgets -bool false && killall WindowManager` |
 | Mission Control: group windows by app | `defaults write com.apple.dock expose-group-apps -bool false && killall Dock` |
 | Auto-hide Dock | `defaults write com.apple.dock autohide -bool false && killall Dock` |
 | ctrl+cmd drag moves windows | `defaults delete -g NSWindowShouldDragOnGesture` |
