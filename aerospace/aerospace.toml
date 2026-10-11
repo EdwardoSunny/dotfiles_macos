@@ -1,0 +1,112 @@
+# AeroSpace config — minimal, based on the default config.
+# Docs: https://nikitabobko.github.io/AeroSpace/guide
+# Commands: https://nikitabobko.github.io/AeroSpace/commands
+
+config-version = 2
+
+start-at-login = true
+
+# Start SketchyBar with AeroSpace (sketchybar ignores duplicate launches).
+after-startup-command = ['exec-and-forget sketchybar']
+
+# Tell SketchyBar which workspace is focused.
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+
+auto-reload-config = true
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+# Workspaces shown in the bar even when empty.
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+key-mapping.preset = 'qwerty'
+
+# Gaps. The top gap leaves room for SketchyBar.
+# The built-in (notched) display already reserves the menu bar strip, so it needs less.
+gaps.inner.horizontal = 8
+gaps.inner.vertical =   8
+gaps.outer.left =       8
+gaps.outer.bottom =     8
+gaps.outer.right =      8
+gaps.outer.top =        [{ monitor.'built-in' = 8 }, 40]
+
+# Float windows that don't make sense tiled.
+on-window-detected = [
+    { if = 'test %{app-bundle-id} = com.apple.FaceTime',          run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.apple.systempreferences', run = 'layout floating' },
+    { if = 'test %{app-bundle-id} = com.apple.calculator',        run = 'layout floating' },
+]
+
+[mode.main.binding]
+    # Terminal
+    alt-enter = 'exec-and-forget open -na Alacritty'
+
+    # Layout
+    alt-slash = 'layout tiles horizontal vertical'
+    alt-comma = 'layout accordion horizontal vertical'
+    alt-f = 'fullscreen'
+    alt-shift-space = 'layout floating tiling'
+
+    # Focus
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
+
+    # Move window
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
+
+    # Resize
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
+
+    # Switch workspace
+    alt-1 = 'workspace 1'
+    alt-2 = 'workspace 2'
+    alt-3 = 'workspace 3'
+    alt-4 = 'workspace 4'
+    alt-5 = 'workspace 5'
+    alt-6 = 'workspace 6'
+    alt-7 = 'workspace 7'
+    alt-8 = 'workspace 8'
+    alt-9 = 'workspace 9'
+
+    # Move window to workspace
+    alt-shift-1 = 'move-node-to-workspace 1'
+    alt-shift-2 = 'move-node-to-workspace 2'
+    alt-shift-3 = 'move-node-to-workspace 3'
+    alt-shift-4 = 'move-node-to-workspace 4'
+    alt-shift-5 = 'move-node-to-workspace 5'
+    alt-shift-6 = 'move-node-to-workspace 6'
+    alt-shift-7 = 'move-node-to-workspace 7'
+    alt-shift-8 = 'move-node-to-workspace 8'
+    alt-shift-9 = 'move-node-to-workspace 9'
+
+    alt-tab = 'workspace-back-and-forth'
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+
+    alt-shift-semicolon = 'mode service'
+
+# Service mode: alt-shift-; then a key.
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main'] # reset layout
+    f = ['layout floating tiling', 'mode main'] # toggle floating/tiling
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+    alt-shift-h = ['join-with left', 'mode main']
+    alt-shift-j = ['join-with down', 'mode main']
+    alt-shift-k = ['join-with up', 'mode main']
+    alt-shift-l = ['join-with right', 'mode main']

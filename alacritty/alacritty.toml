@@ -1,0 +1,60 @@
+# Alacritty config — https://alacritty.org/config-alacritty.html
+
+[general]
+live_config_reload = true
+
+[window]
+padding = { x = 12, y = 10 }
+decorations = "Buttonless"
+opacity = 0.95
+blur = true
+
+[font]
+size = 14.0
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+
+[cursor]
+style = { shape = "Block", blinking = "Off" }
+
+# Shift+Enter sends ESC+CR (newline without submit in TUI apps)
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
+
+# Rosé Pine — https://github.com/rose-pine/alacritty
+[colors.primary]
+background = "#191724"
+foreground = "#e0def4"
+
+[colors.cursor]
+text = "#e0def4"
+cursor = "#524f67"
+
+[colors.vi_mode_cursor]
+text = "#e0def4"
+cursor = "#524f67"
+
+[colors.selection]
+text = "#e0def4"
+background = "#403d52"
+
+[colors.normal]
+black = "#26233a"
+red = "#eb6f92"
+green = "#31748f"
+yellow = "#f6c177"
+blue = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan = "#ebbcba"
+white = "#e0def4"
+
+[colors.bright]
+black = "#6e6a86"
+red = "#eb6f92"
+green = "#31748f"
+yellow = "#f6c177"
+blue = "#9ccfd8"
+magenta = "#c4a7e7"
+cyan = "#ebbcba"
+white = "#e0def4"
