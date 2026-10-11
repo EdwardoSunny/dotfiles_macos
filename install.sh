@@ -28,6 +28,9 @@ echo "==> macOS settings"
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
 defaults write com.apple.controlcenter AutoHideMenuBarOption -int 0
 osascript -l JavaScript -e "ObjC.import('Foundation'); \$.NSDistributedNotificationCenter.defaultCenter.postNotificationNameObjectUserInfoDeliverImmediately('AppleInterfaceMenuBarHidingChangedNotification', \$(), \$(), true)" >/dev/null
+# Give the native menu bar a background, so when it slides down on hover it covers SketchyBar
+# cleanly instead of drawing its text on top (System Settings → Menu Bar → Show menu bar background).
+defaults write NSGlobalDomain SLSMenuBarUseBlurredAppearance -bool true
 # Mission Control: group windows by app (AeroSpace recommends this).
 defaults write com.apple.dock expose-group-apps -bool true
 # Auto-hide the Dock (move the mouse to the bottom edge to show it).

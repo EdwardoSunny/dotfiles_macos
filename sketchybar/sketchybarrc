@@ -5,19 +5,21 @@
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 source "$CONFIG_DIR/colors.sh"
 
-# Floating, rounded, translucent bar.
+# Rounded, translucent bar at the top edge.
+# On the notched built-in display it fills the menu-bar strip (33pt), so the notch sits inside the bar
+# instead of cutting through it. No border line, so nothing gets visibly clipped by the notch.
 # topmost=window: sit at the very top regardless of how macOS reports menu bar auto-hide (macOS 26).
 bar=(
   position=top
   topmost=window
   height=32
-  y_offset=6
-  margin=10
-  corner_radius=12
+  notch_display_height=33
+  y_offset=0
+  margin=8
+  corner_radius=10
   color="$BAR_COLOR"
   blur_radius=30
-  border_width=1
-  border_color="$BAR_BORDER"
+  border_width=0
   shadow=on
   padding_left=8
   padding_right=8
