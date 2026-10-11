@@ -1,4 +1,7 @@
-# AeroSpace config — minimal, based on the default config.
+# AeroSpace config. Keybindings mirror the i3 config in
+# https://github.com/EdwardoSunny/x11-dotfiles (.config/i3/config).
+# i3's $mod (Super, = held Caps Lock via xremap) is alt here (Option, = held Caps Lock via Karabiner),
+# so the same physical keys do the same thing on both machines.
 # Docs: https://nikitabobko.github.io/AeroSpace/guide
 # Commands: https://nikitabobko.github.io/AeroSpace/commands
 
@@ -16,21 +19,23 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 
 auto-reload-config = true
 
-enable-normalization-flatten-containers = true
-enable-normalization-opposite-orientation-for-nested-containers = true
+# i3 has no normalizations; turning them off makes 'split' work the i3 way
+# (same as AeroSpace's i3-like example config).
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
 
 accordion-padding = 30
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
-# Workspaces shown in the bar even when empty.
-persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+# Workspaces shown in the bar even when empty (i3 has 1-10).
+persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 key-mapping.preset = 'qwerty'
 
-# Gaps. Windows start 26pt below the bar.
+# Gaps. Windows start 14pt below the bar.
 # Built-in (notched) display: macOS reserves the 33pt strip the bar sits in, so only the gap is needed.
 # Other displays: bar is 32pt from the top edge, plus the gap.
 gaps.inner.horizontal = 10
@@ -38,7 +43,7 @@ gaps.inner.vertical =   10
 gaps.outer.left =       10
 gaps.outer.bottom =     10
 gaps.outer.right =      10
-gaps.outer.top =        [{ monitor.'built-in' = 26 }, 58]
+gaps.outer.top =        [{ monitor.'built-in' = 14 }, 46]
 
 # Float windows that don't make sense tiled.
 on-window-detected = [
@@ -47,33 +52,44 @@ on-window-detected = [
     { if = 'test %{app-bundle-id} = com.apple.calculator',        run = 'layout floating' },
 ]
 
+# alt = i3 $mod. Launcher (i3: $mod+space -> rofi) is Karabiner: alt+space -> cmd+space (Spotlight).
 [mode.main.binding]
-    # Terminal
-    alt-enter = 'exec-and-forget open -na Alacritty'
+    # start a terminal / kill focused window
+    alt-shift-enter = 'exec-and-forget open -na Alacritty'
+    alt-q = 'close'
 
-    # Layout
-    alt-slash = 'layout tiles horizontal vertical'
-    alt-comma = 'layout accordion horizontal vertical'
-    alt-f = 'fullscreen'
-    alt-shift-space = 'layout floating tiling'
-
-    # Focus
+    # change focus
     alt-h = 'focus left'
     alt-j = 'focus down'
     alt-k = 'focus up'
     alt-l = 'focus right'
+    alt-left = 'focus left'
+    alt-down = 'focus down'
+    alt-up = 'focus up'
+    alt-right = 'focus right'
 
-    # Move window
+    # move focused window
     alt-shift-h = 'move left'
     alt-shift-j = 'move down'
     alt-shift-k = 'move up'
     alt-shift-l = 'move right'
+    alt-shift-left = 'move left'
+    alt-shift-down = 'move down'
+    alt-shift-up = 'move up'
+    alt-shift-right = 'move right'
 
-    # Resize
-    alt-minus = 'resize smart -50'
-    alt-equal = 'resize smart +50'
+    # split (i3: $mod+Shift+w = split h, $mod+Shift+v = split v)
+    alt-shift-w = 'split horizontal'
+    alt-shift-v = 'split vertical'
 
-    # Switch workspace
+    # fullscreen / layouts (stacking, tabbed, toggle split) / floating
+    alt-f = 'fullscreen'
+    alt-s = 'layout v_accordion'               # i3 'layout stacking'
+    alt-w = 'layout h_accordion'               # i3 'layout tabbed'
+    alt-e = 'layout tiles horizontal vertical' # i3 'layout toggle split'
+    alt-shift-space = 'layout floating tiling'
+
+    # switch to workspace
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
@@ -83,8 +99,9 @@ on-window-detected = [
     alt-7 = 'workspace 7'
     alt-8 = 'workspace 8'
     alt-9 = 'workspace 9'
+    alt-0 = 'workspace 10'
 
-    # Move window to workspace
+    # move focused window to workspace
     alt-shift-1 = 'move-node-to-workspace 1'
     alt-shift-2 = 'move-node-to-workspace 2'
     alt-shift-3 = 'move-node-to-workspace 3'
@@ -94,20 +111,35 @@ on-window-detected = [
     alt-shift-7 = 'move-node-to-workspace 7'
     alt-shift-8 = 'move-node-to-workspace 8'
     alt-shift-9 = 'move-node-to-workspace 9'
+    alt-shift-0 = 'move-node-to-workspace 10'
 
-    alt-tab = 'workspace-back-and-forth'
-    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    # reload config (i3: $mod+Shift+c)
+    alt-shift-c = 'reload-config'
 
-    alt-shift-semicolon = 'mode service'
+    # resize mode (i3: $mod+r)
+    alt-r = 'mode resize'
 
-# Service mode: alt-shift-; then a key.
-[mode.service.binding]
-    esc = ['reload-config', 'mode main']
-    r = ['flatten-workspace-tree', 'mode main'] # reset layout
-    f = ['layout floating tiling', 'mode main'] # toggle floating/tiling
-    backspace = ['close-all-windows-but-current', 'mode main']
+    # lock screen (i3: $mod+Ctrl+l). Sleeps the display; locks if a password is required after sleep.
+    alt-ctrl-l = 'exec-and-forget pmset displaysleepnow'
 
-    alt-shift-h = ['join-with left', 'mode main']
-    alt-shift-j = ['join-with down', 'mode main']
-    alt-shift-k = ['join-with up', 'mode main']
-    alt-shift-l = ['join-with right', 'mode main']
+    # audio device / Wi-Fi pickers (i3: $mod+Shift+a / $mod+Shift+n) -> the macOS settings panes
+    alt-shift-a = 'exec-and-forget open "x-apple.systempreferences:com.apple.Sound-Settings.extension"'
+    alt-shift-n = 'exec-and-forget open "x-apple.systempreferences:com.apple.wifi-settings-extension"'
+
+    # Handy speech-to-text (i3: $mod+Shift+t toggle, $mod+Shift+Escape cancel)
+    alt-shift-t = 'exec-and-forget /Applications/Handy.app/Contents/MacOS/handy --toggle-transcription'
+    alt-shift-esc = 'exec-and-forget /Applications/Handy.app/Contents/MacOS/handy --cancel'
+
+# Same keys as i3's resize mode, including its arrow directions.
+[mode.resize.binding]
+    h = 'resize width -50'
+    l = 'resize width +50'
+    k = 'resize height +50'
+    j = 'resize height -50'
+    left = 'resize width -50'
+    right = 'resize width +50'
+    up = 'resize height -50'
+    down = 'resize height +50'
+    enter = 'mode main'
+    esc = 'mode main'
+    alt-r = 'mode main'
