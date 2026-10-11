@@ -7,7 +7,7 @@ Minimal tiling setup: [AeroSpace](https://github.com/nikitabobko/AeroSpace) + [S
 ```
 aerospace/aerospace.toml    window manager config
 alacritty/alacritty.toml    terminal config
-karabiner/karabiner.json    caps lock -> esc (tap) / ctrl (hold)
+karabiner/karabiner.json    caps lock -> esc (tap) / option (hold)
 sketchybar/                 bar: sketchybarrc, colors.sh, plugins/*.sh
 Brewfile                    packages
 install.sh                  installs packages, symlinks configs, applies macOS settings
@@ -31,6 +31,8 @@ Then:
 `install.sh` moves an existing non-symlink `~/.config/<name>` to `~/.config/<name>.backup.<timestamp>`.
 
 ## Keybindings (AeroSpace)
+
+`alt` = Option. Holding **Caps Lock** also acts as Option (Karabiner), so `caps+1` switches workspace, `caps+shift+h` moves a window, etc. Tapping Caps Lock sends Escape.
 
 | Keys | Action |
 | --- | --- |
