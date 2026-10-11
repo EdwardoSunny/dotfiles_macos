@@ -58,25 +58,25 @@ on-window-detected = [
     alt-shift-enter = 'exec-and-forget open -na Alacritty'
     alt-q = 'close'
 
-    # change focus
-    alt-h = 'focus left'
-    alt-j = 'focus down'
-    alt-k = 'focus up'
-    alt-l = 'focus right'
-    alt-left = 'focus left'
-    alt-down = 'focus down'
-    alt-up = 'focus up'
-    alt-right = 'focus right'
+    # change focus (like i3: crosses monitors, wraps around at the far edge)
+    alt-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+    alt-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+    alt-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+    alt-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
+    alt-left = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+    alt-down = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+    alt-up = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+    alt-right = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
 
-    # move focused window
-    alt-shift-h = 'move left'
-    alt-shift-j = 'move down'
-    alt-shift-k = 'move up'
-    alt-shift-l = 'move right'
-    alt-shift-left = 'move left'
-    alt-shift-down = 'move down'
-    alt-shift-up = 'move up'
-    alt-shift-right = 'move right'
+    # move focused window (like i3: moves onto the next monitor at the edge)
+    alt-shift-h = 'move --boundaries all-monitors-outer-frame left'
+    alt-shift-j = 'move --boundaries all-monitors-outer-frame down'
+    alt-shift-k = 'move --boundaries all-monitors-outer-frame up'
+    alt-shift-l = 'move --boundaries all-monitors-outer-frame right'
+    alt-shift-left = 'move --boundaries all-monitors-outer-frame left'
+    alt-shift-down = 'move --boundaries all-monitors-outer-frame down'
+    alt-shift-up = 'move --boundaries all-monitors-outer-frame up'
+    alt-shift-right = 'move --boundaries all-monitors-outer-frame right'
 
     # split (i3: $mod+Shift+w = split h, $mod+Shift+v = split v)
     alt-shift-w = 'split horizontal'
@@ -125,6 +125,9 @@ on-window-detected = [
     # audio device / Wi-Fi pickers (i3: $mod+Shift+a / $mod+Shift+n) -> the macOS settings panes
     alt-shift-a = 'exec-and-forget open "x-apple.systempreferences:com.apple.Sound-Settings.extension"'
     alt-shift-n = 'exec-and-forget open "x-apple.systempreferences:com.apple.wifi-settings-extension"'
+
+    # screenshot a region to the clipboard (i3: $mod+Shift+s -> flameshot gui)
+    alt-shift-s = 'exec-and-forget screencapture -i -c'
 
     # Handy speech-to-text (i3: $mod+Shift+t toggle, $mod+Shift+Escape cancel)
     alt-shift-t = 'exec-and-forget /Applications/Handy.app/Contents/MacOS/handy --toggle-transcription'

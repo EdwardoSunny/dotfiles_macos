@@ -39,8 +39,8 @@ Bindings mirror the i3 config in [x11-dotfiles](https://github.com/EdwardoSunny/
 | `mod+shift+enter` | new terminal |
 | `mod+q` | close window |
 | `mod+space` | launcher (Spotlight, via Karabiner; i3: rofi) |
-| `mod+h/j/k/l` or arrows | focus left/down/up/right |
-| `mod+shift+h/j/k/l` or arrows | move window |
+| `mod+h/j/k/l` or arrows | focus left/down/up/right (crosses monitors, wraps, like i3) |
+| `mod+shift+h/j/k/l` or arrows | move window (onto the next monitor at the edge, like i3) |
 | `mod+shift+w` / `mod+shift+v` | split horizontal / vertical |
 | `mod+f` | fullscreen |
 | `mod+s` / `mod+w` / `mod+e` | stacking / tabbed / toggle split (AeroSpace: v_accordion / h_accordion / tiles) |
@@ -51,11 +51,13 @@ Bindings mirror the i3 config in [x11-dotfiles](https://github.com/EdwardoSunny/
 | `mod+shift+c` | reload config |
 | `mod+ctrl+l` | lock (sleeps display) |
 | `mod+shift+a` / `mod+shift+n` | Sound / Wi-Fi settings (i3: audio / network pickers) |
+| `mod+shift+s` | screenshot a region to the clipboard (i3: flameshot) |
 | `mod+shift+t` / `mod+shift+esc` | Handy: toggle / cancel transcription |
+| hold `alt+enter` | Handy push-to-talk dictation (same as Linux) |
 
-Not available on macOS: i3's `mod+a` (focus parent; AeroSpace has no equivalent), `mod+shift+r` (restart), `mod+shift+e` (exit), Print (use `cmd+shift+4`). Moving floating windows with `mod+drag` is `ctrl+cmd+drag` here.
+Not available on macOS: i3's `mod+a` (focus parent; AeroSpace has no equivalent), `mod+shift+r` (restart), `mod+shift+e` (exit). Moving floating windows with `mod+drag` is `ctrl+cmd+drag` here.
 
-Handy's post-processing shortcut is set to `ctrl+shift+space` in the Handy app (same as Linux), so it doesn't clash with `mod+shift+space`.
+Handy shortcuts are set in the Handy app (`~/Library/Application Support/com.pais.handy/settings_store.json`, not in this repo) to match Linux: transcribe `option+enter` (= `alt+enter`), post-processing `ctrl+shift+space`. Because held Caps Lock is Option here, `caps+enter` also dictates.
 
 These Option combos are taken over system-wide, so the Option characters on those keys (e.g. `™`, `é`, `≠`) can't be typed while AeroSpace runs.
 
