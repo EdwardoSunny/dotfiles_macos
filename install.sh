@@ -22,11 +22,15 @@ for name in aerospace alacritty karabiner sketchybar; do
 done
 
 echo "==> macOS settings"
-# Auto-hide the native menu bar (SketchyBar takes its place).
+# Always auto-hide the native menu bar (SketchyBar takes its place).
+# _HIHideMenuBar does the hiding; the notification applies it without logging out.
+# AutoHideMenuBarOption=0 keeps System Settings → Menu Bar showing "Always" (macOS 26).
 defaults write NSGlobalDomain _HIHideMenuBar -bool true
+defaults write com.apple.controlcenter AutoHideMenuBarOption -int 0
+osascript -l JavaScript -e "ObjC.import('Foundation'); \$.NSDistributedNotificationCenter.defaultCenter.postNotificationNameObjectUserInfoDeliverImmediately('AppleInterfaceMenuBarHidingChangedNotification', \$(), \$(), true)" >/dev/null
 # Mission Control: group windows by app (AeroSpace recommends this).
 defaults write com.apple.dock expose-group-apps -bool true
-killall Dock SystemUIServer 2>/dev/null || true
+killall Dock 2>/dev/null || true
 
 echo "==> Starting AeroSpace (it starts SketchyBar)"
 open -a AeroSpace

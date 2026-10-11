@@ -5,7 +5,8 @@
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 source "$CONFIG_DIR/colors.sh"
 
-sketchybar --bar position=top height=32 color="$BAR_COLOR" padding_left=8 padding_right=8
+# topmost=window: sit at the very top regardless of how macOS reports menu bar auto-hide (macOS 26).
+sketchybar --bar position=top height=34 topmost=window color="$BAR_COLOR" padding_left=8 padding_right=8
 
 default=(
   icon.font="JetBrainsMono Nerd Font:Bold:15.0"

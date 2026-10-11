@@ -56,7 +56,7 @@ FaceTime, System Settings and Calculator always float.
 
 | Setting | Undo |
 | --- | --- |
-| Auto-hide menu bar | `defaults write NSGlobalDomain _HIHideMenuBar -bool false && killall SystemUIServer` |
+| Always auto-hide menu bar | System Settings → Menu Bar → "Automatically hide and show the menu bar" → Never |
 | Mission Control: group windows by app | `defaults write com.apple.dock expose-group-apps -bool false && killall Dock` |
 
 ## Uninstall
