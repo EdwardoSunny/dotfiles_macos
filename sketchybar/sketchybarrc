@@ -20,7 +20,7 @@ bar=(
   color="$BAR_COLOR"
   blur_radius=30
   border_width=0
-  shadow=on
+  shadow=off
   padding_left=8
   padding_right=8
 )

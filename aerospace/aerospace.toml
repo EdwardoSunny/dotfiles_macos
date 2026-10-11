@@ -30,7 +30,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 key-mapping.preset = 'qwerty'
 
-# Gaps. Windows start 18pt below the bar.
+# Gaps. Windows start 26pt below the bar.
 # Built-in (notched) display: macOS reserves the 33pt strip the bar sits in, so only the gap is needed.
 # Other displays: bar is 32pt from the top edge, plus the gap.
 gaps.inner.horizontal = 10
@@ -38,7 +38,7 @@ gaps.inner.vertical =   10
 gaps.outer.left =       10
 gaps.outer.bottom =     10
 gaps.outer.right =      10
-gaps.outer.top =        [{ monitor.'built-in' = 18 }, 50]
+gaps.outer.top =        [{ monitor.'built-in' = 26 }, 58]
 
 # Float windows that don't make sense tiled.
 on-window-detected = [
