@@ -30,14 +30,14 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 key-mapping.preset = 'qwerty'
 
-# Gaps. The top gap leaves room for SketchyBar.
-# The built-in (notched) display already reserves the menu bar strip, so it needs less.
-gaps.inner.horizontal = 8
-gaps.inner.vertical =   8
-gaps.outer.left =       8
-gaps.outer.bottom =     8
-gaps.outer.right =      8
-gaps.outer.top =        [{ monitor.'built-in' = 8 }, 40]
+# Gaps. The floating bar spans y=6..38, so windows start 10pt below it.
+# The built-in (notched) display already reserves a 33pt menu bar strip, so it needs less.
+gaps.inner.horizontal = 10
+gaps.inner.vertical =   10
+gaps.outer.left =       10
+gaps.outer.bottom =     10
+gaps.outer.right =      10
+gaps.outer.top =        [{ monitor.'built-in' = 15 }, 48]
 
 # Float windows that don't make sense tiled.
 on-window-detected = [

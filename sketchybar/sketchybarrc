@@ -5,8 +5,24 @@
 PLUGIN_DIR="$CONFIG_DIR/plugins"
 source "$CONFIG_DIR/colors.sh"
 
+# Floating, rounded, translucent bar.
 # topmost=window: sit at the very top regardless of how macOS reports menu bar auto-hide (macOS 26).
-sketchybar --bar position=top height=34 topmost=window color="$BAR_COLOR" padding_left=8 padding_right=8
+bar=(
+  position=top
+  topmost=window
+  height=32
+  y_offset=6
+  margin=10
+  corner_radius=12
+  color="$BAR_COLOR"
+  blur_radius=30
+  border_width=1
+  border_color="$BAR_BORDER"
+  shadow=on
+  padding_left=8
+  padding_right=8
+)
+sketchybar --bar "${bar[@]}"
 
 default=(
   icon.font="JetBrainsMono Nerd Font:Bold:15.0"
@@ -56,6 +72,33 @@ sketchybar --add item clock right \
   --subscribe battery system_woke power_source_change \
   --add item volume right \
   --set volume script="$PLUGIN_DIR/volume.sh" \
-  --subscribe volume volume_change
+  --subscribe volume volume_change \
+  --add item wifi right \
+  --set wifi label.drawing=off update_freq=30 script="$PLUGIN_DIR/wifi.sh" \
+  --subscribe wifi wifi_change system_woke
+
+##### Tray: background apps, icon shown while running, click to open #####
+# name | bundle id (for the icon) | pgrep -f pattern (is it running?)
+TRAY=(
+  "1password|com.1password.1password|1Password.app/Contents/MacOS/1Password$"
+  "drive|com.google.drivefs|Google Drive.app/Contents/MacOS/Google Drive$"
+  "handy|com.pais.handy|Handy.app/Contents/MacOS/handy$"
+  "karabiner|org.pqrs.Karabiner-Elements.Settings|Karabiner-Core-Service"
+)
+for entry in "${TRAY[@]}"; do
+  IFS='|' read -r name bundle pattern <<< "$entry"
+  sketchybar --add item "tray.$name" right \
+    --set "tray.$name" \
+      label.drawing=off \
+      icon.background.drawing=on \
+      icon.background.image="app.$bundle" \
+      icon.background.image.scale=0.55 \
+      padding_left=3 \
+      padding_right=3 \
+      update_freq=30 \
+      click_script="open -b $bundle" \
+      script="$PLUGIN_DIR/tray.sh '$pattern'" \
+    --subscribe "tray.$name" system_woke
+done
 
 sketchybar --update

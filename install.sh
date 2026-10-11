@@ -32,6 +32,10 @@ osascript -l JavaScript -e "ObjC.import('Foundation'); \$.NSDistributedNotificat
 defaults write com.apple.dock expose-group-apps -bool true
 # Auto-hide the Dock (move the mouse to the bottom edge to show it).
 defaults write com.apple.dock autohide -bool true
+# Move any window by holding ctrl+cmd and dragging anywhere in it (Alacritty has no title bar).
+defaults write -g NSWindowShouldDragOnGesture -bool true
+# No window-opening animations, so tiling feels instant.
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 killall Dock 2>/dev/null || true
 
 echo "==> Starting AeroSpace (it starts SketchyBar)"

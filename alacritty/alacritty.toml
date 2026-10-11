@@ -4,10 +4,13 @@
 live_config_reload = true
 
 [window]
-padding = { x = 12, y = 10 }
-decorations = "Buttonless"
-opacity = 0.95
-blur = true
+padding = { x = 16, y = 14 }
+decorations = "None"        # no title bar; AeroSpace handles placement
+opacity = 0.85             # background transparency (1.0 = opaque)
+blur = true                # blur what's behind the window
+
+[scrolling]
+history = 100000
 
 [font]
 size = 14.0
