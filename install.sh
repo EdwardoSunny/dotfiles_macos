@@ -30,6 +30,8 @@ defaults write com.apple.controlcenter AutoHideMenuBarOption -int 0
 osascript -l JavaScript -e "ObjC.import('Foundation'); \$.NSDistributedNotificationCenter.defaultCenter.postNotificationNameObjectUserInfoDeliverImmediately('AppleInterfaceMenuBarHidingChangedNotification', \$(), \$(), true)" >/dev/null
 # Mission Control: group windows by app (AeroSpace recommends this).
 defaults write com.apple.dock expose-group-apps -bool true
+# Auto-hide the Dock (move the mouse to the bottom edge to show it).
+defaults write com.apple.dock autohide -bool true
 killall Dock 2>/dev/null || true
 
 echo "==> Starting AeroSpace (it starts SketchyBar)"
