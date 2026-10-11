@@ -67,9 +67,21 @@ FaceTime, System Settings and Calculator always float.
 
 Translucent black, rounded SketchyBar at the top edge: workspaces (click to switch; focused one is a white pill) and focused app on the left; background-app tray, Wi-Fi, volume, battery, clock on the right. On the notched built-in display it fills the menu-bar strip so the notch sits inside it.
 
-The tray shows a gray glyph for each background app while it's running (1Password, Google Drive, Tailscale, Cisco Secure Client, Handy, Karabiner); click to open it. Edit the `TRAY` list in `sketchybar/sketchybarrc` to add apps (name, Nerd Font glyph, bundle id, process pattern). The native macOS status icons can't be mirrored on macOS 26: Control Center hosts all third-party ones under the same window name.
+The tray shows a gray glyph for each background app while it's running (1Password, Google Drive, Tailscale, Cisco Secure Client, Handy, Karabiner). Edit the `TRAY` list in `sketchybar/sketchybarrc` to add apps (name, Nerd Font glyph, app bundle id, bundle id owning the menu bar icon, process pattern).
 
-Hovering the top edge still reveals the native macOS menu bar (app menus, status icons) on top of SketchyBar. That's macOS auto-hide behavior and can't be turned off; "Show menu bar background" makes it cover the bar cleanly instead of overlapping text.
+Clicks open the real macOS menus, so the native menu bar is rarely needed:
+
+| Click | Opens |
+| --- | --- |
+| focused app name | that app's menus (Apple, File, Edit, …) in a popup; click one to open it |
+| tray icon | that app's own menu bar menu (falls back to opening the app) |
+| Wi-Fi / battery / clock | the macOS Wi-Fi / Battery / Notification Center panels |
+| volume | Control Center; scroll over it to change volume |
+| workspace number | switch to it |
+
+This goes through `sketchybar/helpers/menubar.swift` (built by `install.sh`): it briefly forces the hidden menu bar on-screen but invisible and presses the item through the Accessibility API, the same trick FelixKratz's SketchyBar menus helper uses. It needs Accessibility permission, which it inherits from AeroSpace because AeroSpace starts SketchyBar. If SketchyBar is started some other way, clicks on menus do nothing.
+
+Hovering the top edge still reveals the native macOS menu bar on top of SketchyBar. That's macOS auto-hide behavior and can't be turned off; "Show menu bar background" makes it cover the bar cleanly instead of overlapping text.
 
 ## macOS settings applied by install.sh
 

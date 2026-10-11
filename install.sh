@@ -8,6 +8,11 @@ DOTFILES="$(cd "$(dirname "$0")" && pwd)"
 echo "==> Homebrew packages"
 brew bundle --file="$DOTFILES/Brewfile"
 
+echo "==> Building SketchyBar menu helper"
+# Opens native macOS menus from bar clicks (Accessibility; inherits AeroSpace's permission).
+mkdir -p "$DOTFILES/sketchybar/helpers/bin"
+swiftc -O "$DOTFILES/sketchybar/helpers/menubar.swift" -o "$DOTFILES/sketchybar/helpers/bin/menubar"
+
 echo "==> Linking configs"
 mkdir -p "$HOME/.config"
 for name in aerospace alacritty karabiner sketchybar; do

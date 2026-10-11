@@ -7,4 +7,5 @@ else
   APP="$(aerospace list-windows --focused --format '%{app-name}' 2>/dev/null)"
 fi
 
-sketchybar --set "$NAME" label="$APP"
+# The app-menu popup belongs to the previous app; close it.
+sketchybar --set "$NAME" label="$APP" popup.drawing=off

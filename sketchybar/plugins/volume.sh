@@ -1,4 +1,10 @@
 #!/bin/bash
+# Volume level. Scroll over it to change volume by 5% per step (volume_change then updates the label).
+
+if [ "$SENDER" = "mouse.scrolled" ]; then
+  osascript -e "set volume output volume ((output volume of (get volume settings)) + 5 * $SCROLL_DELTA)"
+  exit 0
+fi
 
 if [ "$SENDER" = "volume_change" ]; then
   VOLUME="$INFO"
