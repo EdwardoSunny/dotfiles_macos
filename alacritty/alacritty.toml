@@ -6,7 +6,7 @@ live_config_reload = true
 [window]
 padding = { x = 16, y = 14 }
 decorations = "Buttonless" # hidden title bar/buttons, keeps macOS rounded corners
-opacity = 0.85             # background transparency (1.0 = opaque)
+opacity = 0.70             # background transparency (1.0 = opaque)
 blur = true                # blur what's behind the window
 
 [scrolling]
