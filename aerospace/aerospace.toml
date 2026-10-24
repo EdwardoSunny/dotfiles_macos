@@ -19,11 +19,13 @@ exec-on-workspace-change = ['/bin/bash', '-c',
 
 auto-reload-config = true
 
-# i3 has no normalizations; turning them off makes 'split' work the i3 way
-# (same as AeroSpace's i3-like example config).
+# Keep i3's split containers: AeroSpace's default flattening would undo 'split'.
+# Disabling orientation normalization also preserves explicitly chosen i3 splits.
 enable-normalization-flatten-containers = false
 enable-normalization-opposite-orientation-for-nested-containers = false
 
+# Standard AeroSpace tiling defaults. Existing floating windows are separate:
+# focus one and press alt-shift-space to return it to the tiling tree.
 accordion-padding = 30
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
@@ -78,14 +80,14 @@ on-window-detected = [
     alt-shift-up = 'move --boundaries all-monitors-outer-frame up'
     alt-shift-right = 'move --boundaries all-monitors-outer-frame right'
 
-    # split (i3: $mod+Shift+w = split h, $mod+Shift+v = split v)
+    # i3 splits set the container for the next window; they do not unfloat windows.
     alt-shift-w = 'split horizontal'
     alt-shift-v = 'split vertical'
 
     # fullscreen / layouts (stacking, tabbed, toggle split) / floating
     alt-f = 'fullscreen'
-    alt-s = 'layout v_accordion'               # i3 'layout stacking'
-    alt-w = 'layout h_accordion'               # i3 'layout tabbed'
+    alt-s = 'layout v_accordion'               # i3 stacking approximation; overlaps by design
+    alt-w = 'layout h_accordion'               # i3 tabbed approximation; overlaps by design
     alt-e = 'layout tiles horizontal vertical' # i3 'layout toggle split'
     alt-shift-space = 'layout floating tiling'
 
@@ -115,6 +117,9 @@ on-window-detected = [
 
     # reload config (i3: $mod+Shift+c)
     alt-shift-c = 'reload-config'
+
+    # AeroSpace's default service-mode entry; keeps recovery separate from i3 keys.
+    alt-shift-semicolon = 'mode service'
 
     # resize mode (i3: $mod+r)
     alt-r = 'mode resize'
@@ -146,3 +151,9 @@ on-window-detected = [
     enter = 'mode main'
     esc = 'mode main'
     alt-r = 'mode main'
+
+# Non-destructive subset of AeroSpace's default service mode.
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'layout --root tiles', 'balance-sizes', 'mode main']
+    f = ['layout floating tiling', 'mode main']

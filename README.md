@@ -43,12 +43,14 @@ Bindings mirror the i3 config in [x11-dotfiles](https://github.com/EdwardoSunny/
 | `mod+shift+h/j/k/l` or arrows | move window (onto the next monitor at the edge, like i3) |
 | `mod+shift+w` / `mod+shift+v` | split horizontal / vertical |
 | `mod+f` | fullscreen |
-| `mod+s` / `mod+w` / `mod+e` | stacking / tabbed / toggle split (AeroSpace: v_accordion / h_accordion / tiles) |
+| `mod+s` / `mod+w` / `mod+e` | stacking / tabbed approximations (overlapping accordions) / toggle tiled split |
 | `mod+shift+space` | toggle floating |
 | `mod+1..9`, `mod+0` | switch to workspace 1–10 |
 | `mod+shift+1..9`, `mod+shift+0` | move window to workspace 1–10 |
 | `mod+r` | resize mode: `h/l` width −/+, `j/k` height −/+, arrows, `enter`/`esc`/`mod+r` to exit |
 | `mod+shift+c` | reload config |
+| `mod+shift+;`, then `r` | reset and balance the current workspace's tiled layout |
+| `mod+shift+;`, then `f` / `esc` | toggle focused window floating / reload config; return to normal mode |
 | `mod+ctrl+l` | lock (sleeps display) |
 | `mod+shift+a` / `mod+shift+n` | Sound / Wi-Fi settings (i3: audio / network pickers) |
 | `mod+shift+s` | screenshot a region to the clipboard (i3: flameshot) |
@@ -62,6 +64,14 @@ Handy shortcuts are set in the Handy app (`~/Library/Application Support/com.pai
 These Option combos are taken over system-wide, so the Option characters on those keys (e.g. `™`, `é`, `≠`) can't be typed while AeroSpace runs.
 
 FaceTime, System Settings and Calculator always float.
+
+### Tiling and overlapping windows
+
+The config keeps AeroSpace's standard tiled layout, auto orientation and accordion padding, with i3 bindings, existing gaps and SketchyBar integration. Both tree normalizations remain disabled to preserve i3's explicit split containers; enabling default flattening would undo `mod+shift+w/v`.
+
+Floating windows are outside the tiling tree: focus the overlapping window and press `mod+shift+space` to tile it again. `mod+shift+w/v` prepares a split for the next window; it does not turn floating windows into tiles. `mod+e` changes the existing tiled container's layout. `mod+s/w` intentionally overlaps windows using AeroSpace's accordion approximation of i3 stacking/tabbed layouts.
+
+For tangled tiled containers, press `mod+shift+;`, then `r` to flatten the workspace, select tiles and balance sizes. This does not unfloat windows or exit macOS native fullscreen. Exit native fullscreen first; use `mod+f` for AeroSpace-managed fullscreen instead.
 
 ## Bar
 
