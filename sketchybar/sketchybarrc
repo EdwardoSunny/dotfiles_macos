@@ -43,9 +43,21 @@ sketchybar --default "${default[@]}"
 ##### AeroSpace workspaces #####
 sketchybar --add event aerospace_workspace_change
 
+# Build the small AppKit display-ID mapper when needed.
+DISPLAY_HELPER="$CONFIG_DIR/helpers/bin/displays"
+if [[ ! -x "$DISPLAY_HELPER" || "$CONFIG_DIR/helpers/displays.swift" -nt "$DISPLAY_HELPER" ]]; then
+  swiftc "$CONFIG_DIR/helpers/displays.swift" -o "$DISPLAY_HELPER"
+fi
+
+# One updater handles all items so display changes are reflected even if focus
+# does not change when a monitor is connected or disconnected.
+sketchybar --add item aerospace_workspaces_update left \
+  --set aerospace_workspaces_update drawing=off update_freq=5 \
+    script="$PLUGIN_DIR/aerospace.sh" \
+  --subscribe aerospace_workspaces_update aerospace_workspace_change display_change system_woke
+
 for sid in $(aerospace list-workspaces --all); do
   sketchybar --add item "space.$sid" left \
-    --subscribe "space.$sid" aerospace_workspace_change \
     --set "space.$sid" \
       icon.drawing=off \
       label="$sid" \
@@ -57,8 +69,7 @@ for sid in $(aerospace list-workspaces --all); do
       background.corner_radius=5 \
       background.height=22 \
       background.drawing=off \
-      click_script="aerospace workspace $sid" \
-      script="$PLUGIN_DIR/aerospace.sh $sid"
+      click_script="aerospace workspace $sid"
 done
 
 # Clicks open the real macOS menus via helpers/bin/menubar (Accessibility; see helpers/menubar.swift).
