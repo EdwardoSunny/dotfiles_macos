@@ -49,6 +49,7 @@ Bindings mirror the i3 config in [x11-dotfiles](https://github.com/EdwardoSunny/
 | `mod+shift+1..9`, `mod+shift+0` | move window to workspace 1–10 |
 | `mod+r` | resize mode: `h/l` width −/+, `j/k` height −/+, arrows, `enter`/`esc`/`mod+r` to exit |
 | `mod+shift+c` | reload config |
+| `mod+shift+r` | reload AeroSpace config and SketchyBar without restarting AeroSpace |
 | `mod+shift+;`, then `r` | reset and balance the current workspace's tiled layout |
 | `mod+shift+;`, then `f` / `esc` | toggle focused window floating / reload config; return to normal mode |
 | `mod+ctrl+l` | lock (sleeps display) |
@@ -57,7 +58,7 @@ Bindings mirror the i3 config in [x11-dotfiles](https://github.com/EdwardoSunny/
 | `mod+shift+t` / `mod+shift+esc` | Handy: toggle / cancel transcription |
 | hold `alt+enter` | Handy push-to-talk dictation (same as Linux) |
 
-Not available on macOS: i3's `mod+a` (focus parent; AeroSpace has no equivalent), `mod+shift+r` (restart), `mod+shift+e` (exit). Moving floating windows with `mod+drag` is `ctrl+cmd+drag` here.
+Not available on macOS: i3's `mod+a` (focus parent; AeroSpace has no equivalent), `mod+shift+e` (exit). Moving floating windows with `mod+drag` is `ctrl+cmd+drag` here.
 
 Handy shortcuts are set in the Handy app (`~/Library/Application Support/com.pais.handy/settings_store.json`, not in this repo) to match Linux: transcribe `option+enter` (= `alt+enter`), post-processing `ctrl+shift+space`. Because held Caps Lock is Option here, `caps+enter` also dictates.
 

@@ -133,6 +133,9 @@ on-window-detected = [
     # reload config (i3: $mod+Shift+c)
     alt-shift-c = 'reload-config'
 
+    # Reload configuration and the bar without restarting AeroSpace or rebuilding splits.
+    alt-shift-r = ['reload-config', 'exec-and-forget sketchybar --reload']
+
     # AeroSpace's default service-mode entry; keeps recovery separate from i3 keys.
     alt-shift-semicolon = 'mode service'
 
