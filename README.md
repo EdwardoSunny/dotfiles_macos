@@ -77,6 +77,8 @@ For tangled tiled containers, press `mod+shift+;`, then `r` to flatten the works
 
 Translucent black, rounded SketchyBar at the top edge: workspaces (click to switch; focused one is a white pill) and focused app on the left; background-app tray, Wi-Fi, volume, battery, clock on the right. On the notched built-in display it fills the menu-bar strip so the notch sits inside it.
 
+SketchyBar starts under AeroSpace and is restarted if its process exits, preserving the Accessibility permission used by its menu helper.
+
 The tray shows a gray glyph for each background app while it's running (1Password, Google Drive, Tailscale, Cisco Secure Client, Handy, Karabiner). Edit the `TRAY` list in `sketchybar/sketchybarrc` to add apps (name, Nerd Font glyph, app bundle id, bundle id owning the menu bar icon, process pattern).
 
 Clicks open the real macOS menus, so the native menu bar is rarely needed:

@@ -9,8 +9,9 @@ config-version = 2
 
 start-at-login = true
 
-# Start SketchyBar with AeroSpace (sketchybar ignores duplicate launches).
-after-startup-command = ['exec-and-forget sketchybar']
+# Keep SketchyBar under AeroSpace so its menu helper retains Accessibility access.
+# Restart it if the process crashes, including during display changes.
+after-startup-command = ['exec-and-forget if ! pgrep -x sketchybar >/dev/null; then while true; do sketchybar; sleep 2; done; fi']
 
 # Tell SketchyBar which workspace is focused.
 exec-on-workspace-change = ['/bin/bash', '-c',
