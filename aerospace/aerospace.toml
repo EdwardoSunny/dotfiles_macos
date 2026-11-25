@@ -55,14 +55,14 @@ on-window-detected = [
     { if = 'test %{app-bundle-id} = com.apple.calculator',        run = 'layout floating' },
 ]
 
-# Workspaces 1–5 follow the LG when connected; otherwise they stay on the laptop.
+# Workspaces 1–5 follow an external monitor; otherwise they stay on the laptop.
 # Workspaces 6–10 always belong to the laptop.
 [workspace-to-monitor-force-assignment]
-1 = ['LG HDR WFHD', 'built-in']
-2 = ['LG HDR WFHD', 'built-in']
-3 = ['LG HDR WFHD', 'built-in']
-4 = ['LG HDR WFHD', 'built-in']
-5 = ['LG HDR WFHD', 'built-in']
+1 = ['^(?!built-in).+', 'built-in']
+2 = ['^(?!built-in).+', 'built-in']
+3 = ['^(?!built-in).+', 'built-in']
+4 = ['^(?!built-in).+', 'built-in']
+5 = ['^(?!built-in).+', 'built-in']
 6 = 'built-in'
 7 = 'built-in'
 8 = 'built-in'

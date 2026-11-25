@@ -66,6 +66,8 @@ These Option combos are taken over system-wide, so the Option characters on thos
 
 FaceTime, System Settings and Calculator always float.
 
+Workspaces 1–5 use an external display when present, falling back to the built-in display; 6–10 stay on the built-in display. With multiple external displays, AeroSpace chooses a matching external display.
+
 ### Tiling and overlapping windows
 
 The config keeps AeroSpace's standard tiled layout, auto orientation and accordion padding, with i3 bindings, existing gaps and SketchyBar integration. Both tree normalizations remain disabled to preserve i3's explicit split containers; enabling default flattening would undo `mod+shift+w/v`.
