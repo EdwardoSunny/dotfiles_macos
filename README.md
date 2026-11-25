@@ -45,8 +45,8 @@ Bindings mirror the i3 config in [x11-dotfiles](https://github.com/EdwardoSunny/
 | `mod+f` | fullscreen |
 | `mod+s` / `mod+w` / `mod+e` | stacking / tabbed approximations (overlapping accordions) / toggle tiled split |
 | `mod+shift+space` | toggle floating |
-| `mod+1..9`, `mod+0` | switch to workspace 1–10 |
-| `mod+shift+1..9`, `mod+shift+0` | move window to workspace 1–10 |
+| `mod+1..9`, `mod+0` | switch to workspace 1–10 on the focused monitor |
+| `mod+shift+1..9`, `mod+shift+0` | move window to workspace 1–10 on the focused monitor |
 | `mod+r` | resize mode: `h/l` width −/+, `j/k` height −/+, arrows, `enter`/`esc`/`mod+r` to exit |
 | `mod+shift+c` | reload config |
 | `mod+shift+r` | reload AeroSpace config and SketchyBar without restarting AeroSpace |
@@ -66,7 +66,9 @@ These Option combos are taken over system-wide, so the Option characters on thos
 
 FaceTime, System Settings and Calculator always float.
 
-Workspaces 1–5 use an external display when present, falling back to the built-in display; 6–10 stay on the built-in display. With multiple external displays, AeroSpace chooses a matching external display.
+Each monitor has its own numbered workspaces 1–10. The number keys act on the focused monitor; unlike i3, workspace numbers are not shared between monitors. SketchyBar shows all ten on each display. When a monitor disconnects, its occupied workspaces remain accessible on the remaining display as numbers marked `*`; after it reconnects, selecting one of its workspaces returns it to that monitor.
+
+Workspace switches use AeroSpace's `summon-workspace` command to create and focus workspaces directly on the focused monitor. A workspace currently visible on another monitor moves away from that monitor when summoned.
 
 ### Tiling and overlapping windows
 

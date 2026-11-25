@@ -56,21 +56,6 @@ sketchybar --add item aerospace_workspaces_update left \
     script="$PLUGIN_DIR/aerospace.sh" \
   --subscribe aerospace_workspaces_update aerospace_workspace_change display_change system_woke
 
-for sid in $(aerospace list-workspaces --all); do
-  sketchybar --add item "space.$sid" left \
-    --set "space.$sid" \
-      icon.drawing=off \
-      label="$sid" \
-      label.padding_left=8 \
-      label.padding_right=8 \
-      padding_left=2 \
-      padding_right=2 \
-      background.color="$WHITE" \
-      background.corner_radius=5 \
-      background.height=22 \
-      background.drawing=off \
-      click_script="aerospace workspace $sid"
-done
 
 # Clicks open the real macOS menus via helpers/bin/menubar (Accessibility; see helpers/menubar.swift).
 MENUBAR="$CONFIG_DIR/helpers/bin/menubar"

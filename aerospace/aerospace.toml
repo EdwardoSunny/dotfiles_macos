@@ -31,9 +31,6 @@ accordion-padding = 30
 default-root-container-layout = 'tiles'
 default-root-container-orientation = 'auto'
 
-# Workspaces shown in the bar even when empty (i3 has 1-10).
-persistent-workspaces = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 key-mapping.preset = 'qwerty'
@@ -54,20 +51,6 @@ on-window-detected = [
     { if = 'test %{app-bundle-id} = com.apple.systempreferences', run = 'layout floating' },
     { if = 'test %{app-bundle-id} = com.apple.calculator',        run = 'layout floating' },
 ]
-
-# Workspaces 1–5 follow an external monitor; otherwise they stay on the laptop.
-# Workspaces 6–10 always belong to the laptop.
-[workspace-to-monitor-force-assignment]
-1 = ['^(?!built-in).+', 'built-in']
-2 = ['^(?!built-in).+', 'built-in']
-3 = ['^(?!built-in).+', 'built-in']
-4 = ['^(?!built-in).+', 'built-in']
-5 = ['^(?!built-in).+', 'built-in']
-6 = 'built-in'
-7 = 'built-in'
-8 = 'built-in'
-9 = 'built-in'
-10 = 'built-in'
 
 # alt = i3 $mod. Launcher (i3: $mod+space -> rofi) is Karabiner: alt+space -> cmd+space (Spotlight).
 [mode.main.binding]
@@ -106,29 +89,29 @@ on-window-detected = [
     alt-e = 'layout tiles horizontal vertical' # i3 'layout toggle split'
     alt-shift-space = 'layout floating tiling'
 
-    # switch to workspace
-    alt-1 = 'workspace 1'
-    alt-2 = 'workspace 2'
-    alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
-    alt-5 = 'workspace 5'
-    alt-6 = 'workspace 6'
-    alt-7 = 'workspace 7'
-    alt-8 = 'workspace 8'
-    alt-9 = 'workspace 9'
-    alt-0 = 'workspace 10'
+    # Each monitor has its own set of workspaces 1–10.
+    alt-1 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 1'
+    alt-2 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 2'
+    alt-3 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 3'
+    alt-4 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 4'
+    alt-5 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 5'
+    alt-6 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 6'
+    alt-7 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 7'
+    alt-8 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 8'
+    alt-9 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 9'
+    alt-0 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh switch 10'
 
-    # move focused window to workspace
-    alt-shift-1 = 'move-node-to-workspace 1'
-    alt-shift-2 = 'move-node-to-workspace 2'
-    alt-shift-3 = 'move-node-to-workspace 3'
-    alt-shift-4 = 'move-node-to-workspace 4'
-    alt-shift-5 = 'move-node-to-workspace 5'
-    alt-shift-6 = 'move-node-to-workspace 6'
-    alt-shift-7 = 'move-node-to-workspace 7'
-    alt-shift-8 = 'move-node-to-workspace 8'
-    alt-shift-9 = 'move-node-to-workspace 9'
-    alt-shift-0 = 'move-node-to-workspace 10'
+    # Move the focused window to the corresponding workspace on its monitor.
+    alt-shift-1 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 1'
+    alt-shift-2 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 2'
+    alt-shift-3 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 3'
+    alt-shift-4 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 4'
+    alt-shift-5 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 5'
+    alt-shift-6 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 6'
+    alt-shift-7 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 7'
+    alt-shift-8 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 8'
+    alt-shift-9 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 9'
+    alt-shift-0 = 'exec-and-forget /bin/bash ~/.config/aerospace/workspace.sh move 10'
 
     # reload config (i3: $mod+Shift+c)
     alt-shift-c = 'reload-config'
